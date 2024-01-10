@@ -173,8 +173,79 @@ def temperaturas():
     for i in range(1, len(lista_meses_media_temp) + 1):
             print("{} {}" .format(i, lista_meses_media_temp[i]))
 
-    
+def crime():
+    lista_classificacao = []
+    lista_perguntas = ['Telefonou para a vítima?','Esteve no local do crime?', 'Mora perto da vítima?', 'Devia para a vítima?', 'Já trabalhou com a vítima?' ]
+    for i in range(0, len(lista_perguntas)):
+        print(lista_perguntas[i])
+        resposta = int(input("Sim(1) ou Não(0)"))
+        lista_classificacao.append(resposta)
+
+    classificacao = sum(lista_classificacao)
+    print(classificacao)
+
+    if classificacao == 0:
+        print("inocente")
+    elif classificacao <= 2:
+        print("Suspeito")
+    elif classificacao <= 4:
+        print("Cúmplice")
+    else:
+        print("Culpado")
+
+def qtd_notas():              
+    prosseguir = 0
+    lista_notas = []
+    acima = []
+    abaixo = []
+    while prosseguir >= 0:
+        notas = float(input("Digite a nota"))
+        lista_notas.append(notas)
+        prosseguir = int(input("Deseja adcionar notas? "))
+
+    qtd_valores_lidos = len(lista_notas)
+
+    reverso = list(reversed(lista_notas))
+    for numero in reverso:
+        print(numero)
+
+    media = sum(lista_notas) / len(lista_notas)
+
+    for numero in lista_notas:
+        if numero >= media:
+            acima_media = numero
+            acima.append(acima_media)
+    qtde_acima_da_media = len(acima)
+
+    for numero in lista_notas:
+        if numero < 7:
+            abaixo_7 = numero
+            abaixo.append(abaixo_7)
+    qtde_abaixo_7 = len(abaixo)
+
+    soma = sum(lista_notas)
+
+    print('Quantidade de valores lidos = {}'.format(qtd_valores_lidos))
+
+    for numero in lista_notas:
+        print(numero, end=' ')
+
+    for numero in lista_notas:
+        print(numero)
+
+    print('soma dos valores: {}' .format(soma))
+    print('A média é: {}' .format(media))
+    print('Qtde de valores acima da media: {}' .format(qtde_acima_da_media))
+    print('Qtde abaixo de sete: {}' .format(qtde_abaixo_7))
+    print('Fim do programa')
+
+
+
+
+
+
+
 
 if (__name__ == "__main__"):
-    temperaturas()
+    qtd_notas()
     
