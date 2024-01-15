@@ -239,7 +239,21 @@ def qtd_notas():
     print('Qtde abaixo de sete: {}' .format(qtde_abaixo_7))
     print('Fim do programa')
 
+def salarios(vendas):
+    lista_salarios = []
+    min = 200
+    max = 299
 
+    salario = 200 + (vendas * 0.09)
+
+    for i in range(0, 9):
+        lista_salarios.append([min, max])
+        min += 100
+        max += 100
+
+    for i, intervalo in enumerate(lista_salarios):
+        if intervalo[0] <= salario <= intervalo[1]:
+            print("O salário está no : {}".format(lista_salarios[i]))
 
 
 
@@ -247,5 +261,5 @@ def qtd_notas():
 
 
 if (__name__ == "__main__"):
-    qtd_notas()
+    salarios(600)
     
