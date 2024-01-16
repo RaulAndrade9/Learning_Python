@@ -255,11 +255,33 @@ def salarios(vendas):
         if intervalo[0] <= salario <= intervalo[1]:
             print("O salário está no : {}".format(lista_salarios[i]))
 
+def saltos():
+    lista_ordem_saltos = ['Primeiro Salto', 'Segundo Salto', 'Terceiro Salto', 'Quarto Salto', 'Quinto Salto']
+    nome = input("Informe o nome")
+    while nome != '':
+        lista_saltos = []
+        for i in range(0, 5):
+            salto = float(input("Informe a altura do salto"))
+            lista_saltos.append(salto)
+           
+        for i in range(0, 5):
+             print('{} : {} m' .format(lista_ordem_saltos[i], lista_saltos[i]))   
+        media = sum(lista_saltos) / len(lista_saltos)
+        print('Resultado Final')
+        print('Atleta: {}' .format(nome))
+        print('Saltos: {}' .format(lista_saltos))
+        print('Média dos saltos: {} m' .format(media))
+        nome = input("Informe um nome")
+    
+    print('Fim do programa')
+        
+    
+
 
 
 
 
 
 if (__name__ == "__main__"):
-    salarios(600)
+    saltos()
     
