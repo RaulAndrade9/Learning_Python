@@ -275,13 +275,84 @@ def saltos():
     
     print('Fim do programa')
         
+def votos_jogadores():  
+    lista_votos = []
+    lista_contagem = []
+    confirmacao = 1
+    while confirmacao != 0:
+        voto = int(input("Qual o melhor jogador ?"))
+        if voto < 1 or voto > 23:
+            print("Voto inválido. Informe um número entre 1 e 23")
+        else:
+            lista_votos.append(voto)
+        confirmacao = int(input("Deseja continuar votando? Sim (1)  Não (0)"))
     
+    total_votos = len(lista_votos)
+    
+    #adciona em uma lista uma sublista com o número de votos, jogador votado
+    for i in range(0, len(lista_votos)):
+        contagem_item = lista_votos.count(lista_votos[i])
+        numero_votado = lista_votos[i]
+        lista_contagem.append([contagem_item, numero_votado])     
+    
+    #quantidade de votos por jogador
+    jogadores_processados = set()
+    for votos_totais in lista_contagem:
+        jogador = votos_totais[1]
+        porcentagem_votos = (votos_totais[0] / total_votos) * 100
+        # Verifica se o jogador já foi processado
+        if jogador not in jogadores_processados:
+            print("Jogador: {} Quantidade de votos: {} Porcentagem de votos: {} %".format(jogador, votos_totais[0], porcentagem_votos))
+            jogadores_processados.add(jogador)
 
 
 
+    #verifica qual foi o jogador mais votado e quantos votos teve
+    maior_voto = max(lista_contagem, key=lambda x:x[0])
+    jogador_maior_voto = maior_voto[1]
+
+    print("Maior número de votos: {}\nJogador com mais votos: {}" .format(maior_voto[0], jogador_maior_voto))   
+
+def sistemas_operacionais():
+    lista_so = [['Microsoft'], ['Unix'], ['Linux'], ['Netware'], ['Mac OS'], ['Outros']]
+    lista_votos = []
+    confirmacao = 1
+    #cria a lista com os votos
+    while confirmacao != 0:
+        voto = int(input("Digite o voto"))
+        if voto >= 1 and voto <= 6:
+            lista_votos.append(voto)
+        confirmacao = int(input("Deseja continuar votando? Sim(1) Não (0)"))
+
+    total_votos = len(lista_votos)
+    num_cont = 1
+    #adciona os votos aos índices correspondentes na lista de so
+    for i in range(0, 6): 
+        contagem = lista_votos.count(num_cont)
+        lista_so[i].append(contagem)
+        media = (lista_so[i][1] / total_votos) * 100
+        lista_so[i].append(media)
+        num_cont += 1
+
+    #verifica qual foi o so que teve mais votos
+    maior = 0
+    for i in range(0, 6):
+        if lista_so[i][1] > maior:
+            maior = lista_so[i][1]
+
+    for sublista in lista_so:
+        if maior in sublista:
+            indice = lista_so.index(sublista)
+
+            
+
+    for i in range(0, 6):
+        print("{}     {}     {}%\n" .format(lista_so[i][0], lista_so[i][1], lista_so[i][2]))
+
+    print("O sistema operacional mas votado foi o {} com {} votos, correspondendo a {}% dos votos" .format(lista_so[indice][0],lista_so[indice][1], lista_so[indice][2] ))
 
 
 
 if (__name__ == "__main__"):
-    saltos()
+    sistemas_operacionais()
     
